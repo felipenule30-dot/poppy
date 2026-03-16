@@ -1,0 +1,62 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Registrar movimiento</h1>
+        <div class="meta">{{ item.producto.nombre }} · Stock actual: {{ item.stock_actual }}</div>
+    </div>
+</div>
+
+{% if messages %}
+    <div style="margin-bottom: 20px;">
+        {% for message in messages %}
+            <div class="card" style="padding: 14px; margin-bottom: 10px;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="card" style="max-width: 760px;">
+    <form method="post">
+        {% csrf_token %}
+
+        <div style="display:grid; gap:18px;">
+            <div>
+                <label>Tipo de movimiento</label>
+                <select name="tipo" style="width:100%; padding:12px; margin-top:6px;">
+                    <option value="entrada">Entrada</option>
+                    <option value="salida">Salida</option>
+                    <option value="ajuste">Ajuste</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Cantidad</label>
+                <input type="number" name="cantidad" value="1" style="width:100%; padding:12px; margin-top:6px;">
+                <div class="meta" style="margin-top:6px;">
+                    Para ajuste puedes usar positivo o negativo. Para entrada o salida usa valor positivo.
+                </div>
+            </div>
+
+            <div>
+                <label>Nota</label>
+                <textarea name="nota" rows="4" style="width:100%; padding:12px; margin-top:6px;"></textarea>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:var(--accent); color:white;">
+                    Registrar movimiento
+                </button>
+
+                <a href="/panel/inventario/" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
+                    Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

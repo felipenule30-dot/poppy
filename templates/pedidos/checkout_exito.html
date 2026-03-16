@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load money_filters %}
+
+{% block content %}
+
+<section class="section">
+    <div class="card" style="
+        padding: 42px;
+        max-width: 780px;
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 30px;
+    ">
+        <p class="section-label">Pedido registrado</p>
+
+        <h2 class="editorial-title" style="margin-bottom:16px;">
+            ¡gracias por tu pedido!
+        </h2>
+
+        <p style="font-size:16px;">
+            Tu pedido <strong>#{{ pedido.id }}</strong> fue registrado correctamente.
+        </p>
+
+        <p style="margin-bottom:0;">
+            Estado actual:
+            <strong style="color:var(--poppy-blue);">
+                {{ pedido.get_estado_display }}
+            </strong>
+        </p>
+
+        <div style="
+            margin-top: 28px;
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            flex-wrap:wrap;
+        ">
+            <a href="/" class="btn btn-primary">
+                Volver al inicio
+            </a>
+
+            <a href="/colecciones/" class="btn btn-outline-dark">
+                Seguir comprando
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

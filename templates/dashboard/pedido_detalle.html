@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+{% load money_filters %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Pedido #{{ pedido.id }}</h1>
+        <div class="meta">Detalle del pedido online</div>
+    </div>
+</div>
+
+<section class="grid grid-2" style="margin-bottom: 24px;">
+    <div class="card">
+        <h3>Cliente</h3>
+        <p><strong>Nombre:</strong> {{ pedido.nombre_cliente }}</p>
+        <p><strong>Email:</strong> {{ pedido.email|default:"-" }}</p>
+        <p><strong>Teléfono:</strong> {{ pedido.telefono|default:"-" }}</p>
+        <p><strong>Dirección:</strong> {{ pedido.direccion|default:"-" }}</p>
+        <p><strong>Ciudad:</strong> {{ pedido.ciudad|default:"-" }}</p>
+        {% if pedido.notas %}
+            <p><strong>Notas:</strong> {{ pedido.notas }}</p>
+        {% endif %}
+    </div>
+
+    <div class="card">
+        <h3>Pedido</h3>
+        <p><strong>Estado actual:</strong> {{ pedido.get_estado_display }}</p>
+        <p><strong>Subtotal:</strong> {{ pedido.subtotal|cop }}</p>
+        <p><strong>Total:</strong> {{ pedido.total|cop }}</p>
+        <p><strong>Fecha:</strong> {{ pedido.created_at|date:"d/m/Y H:i" }}</p>
+
+        <hr style="margin:16px 0;">
+
+        <form method="post" action="{% url 'panel_pedido_estado' pedido.id %}">
+            {% csrf_token %}
+            <label>Cambiar estado</label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+                <select name="estado" style="padding:12px; min-width:220px;">
+                    {% for value, label in estados %}
+                        <option value="{{ value }}" {% if pedido.estado == value %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:var(--accent); color:white;">
+                    Guardar estado
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="card">
+    <h3>Items del pedido</h3>
+
+    <div style="overflow-x: auto; margin-top: 16px;">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="text-align: left; border-bottom: 1px solid var(--line);">
+                    <th style="padding: 14px 10px;">Producto</th>
+                    <th style="padding: 14px 10px;">Cantidad</th>
+                    <th style="padding: 14px 10px;">Precio unitario</th>
+                    <th style="padding: 14px 10px;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in pedido.items.all %}
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: 14px 10px;">{{ item.nombre_producto }}</td>
+                        <td style="padding: 14px 10px;">{{ item.cantidad }}</td>
+                        <td style="padding: 14px 10px;">{{ item.precio_unitario|cop }}</td>
+                        <td style="padding: 14px 10px;"><strong>{{ item.subtotal|cop }}</strong></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'panel_pedidos' %}" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
+        Volver a pedidos
+    </a>
+</div>
+
+{% endblock %}

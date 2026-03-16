@@ -1,0 +1,174 @@
+{% extends "dashboard/base.html" %}
+{% load money_filters %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Proveedores</h1>
+        <div class="meta">Gestión comercial y de abastecimiento</div>
+    </div>
+
+    <div>
+        <a href="{% url 'panel_proveedor_nuevo' %}" style="
+            display:inline-block;
+            padding:12px 18px;
+            border:none;
+            border-radius:12px;
+            background:var(--accent);
+            color:white;
+            font-weight:700;
+        ">
+            Nuevo proveedor
+        </a>
+    </div>
+</div>
+
+{% if messages %}
+    <div style="margin-bottom:20px;">
+        {% for message in messages %}
+            <div class="card" style="padding:14px; margin-bottom:10px;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="card" style="margin-bottom:20px;">
+    <form method="get" style="display:flex; gap:12px; flex-wrap:wrap;">
+        <input
+            type="text"
+            name="q"
+            value="{{ q }}"
+            placeholder="Buscar por nombre"
+            style="flex:1; min-width:240px; padding:12px;"
+        >
+
+        <button type="submit" style="
+            padding:12px 18px;
+            border:none;
+            border-radius:12px;
+            background:var(--accent);
+            color:white;
+        ">
+            Buscar
+        </button>
+    </form>
+</div>
+
+<div class="card">
+    <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse;">
+            <thead>
+                <tr style="text-align:left; border-bottom:1px solid var(--line);">
+                    <th style="padding:14px 10px;">Proveedor</th>
+                    <th style="padding:14px 10px;">Contacto</th>
+                    <th style="padding:14px 10px;">Ubicación</th>
+                    <th style="padding:14px 10px;">Lead time</th>
+                    <th style="padding:14px 10px;">Productos</th>
+                    <th style="padding:14px 10px;">Stock asociado</th>
+                    <th style="padding:14px 10px;">Valor inventario</th>
+                    <th style="padding:14px 10px;">Estado</th>
+                    <th style="padding:14px 10px;">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for proveedor in proveedores %}
+                    <tr style="border-bottom:1px solid var(--line);">
+                        <td style="padding:14px 10px;">
+                            <strong>{{ proveedor.nombre }}</strong>
+                            {% if proveedor.contacto %}
+                                <div style="font-size:12px; color:#666; margin-top:4px;">
+                                    {{ proveedor.contacto }}
+                                </div>
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            <div>{{ proveedor.telefono|default:"-" }}</div>
+                            {% if proveedor.whatsapp %}
+                                <div style="font-size:12px; color:#666; margin-top:4px;">
+                                    WhatsApp: {{ proveedor.whatsapp }}
+                                </div>
+                            {% endif %}
+                            {% if proveedor.email %}
+                                <div style="font-size:12px; color:#666; margin-top:4px;">
+                                    {{ proveedor.email }}
+                                </div>
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {% if proveedor.ciudad or proveedor.pais %}
+                                {{ proveedor.ciudad|default:"" }}{% if proveedor.ciudad and proveedor.pais %}, {% endif %}{{ proveedor.pais|default:"" }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ proveedor.tiempo_entrega_dias }} días
+                        </td>
+
+                        <td style="padding:14px 10px; font-weight:700;">
+                            {{ proveedor.total_productos }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ proveedor.total_stock }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ proveedor.valor_stock|cop }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {% if proveedor.activo %}
+                                <span style="
+                                    padding:6px 10px;
+                                    border-radius:999px;
+                                    background:#e6f6ea;
+                                    color:#18794e;
+                                    font-size:12px;
+                                    font-weight:700;
+                                ">
+                                    Activo
+                                </span>
+                            {% else %}
+                                <span style="
+                                    padding:6px 10px;
+                                    border-radius:999px;
+                                    background:#fdeaea;
+                                    color:#b42318;
+                                    font-size:12px;
+                                    font-weight:700;
+                                ">
+                                    Inactivo
+                                </span>
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            <a href="{% url 'panel_proveedor_editar' proveedor.id %}" style="
+                                padding:8px 12px;
+                                border:1px solid var(--line);
+                                border-radius:10px;
+                            ">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9" style="padding:18px 10px;" class="muted">
+                            No hay proveedores registrados todavía.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

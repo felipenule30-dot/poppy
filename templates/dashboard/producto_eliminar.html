@@ -1,0 +1,32 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Eliminar producto</h1>
+        <div class="meta">{{ producto.nombre }}</div>
+    </div>
+</div>
+
+<div class="card" style="max-width:700px;">
+    <p>¿Seguro que quieres eliminar este producto?</p>
+
+    <p><strong>{{ producto.nombre }}</strong></p>
+
+    <form method="post" style="margin-top:18px;">
+        {% csrf_token %}
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:#b42318; color:white;">
+                Sí, eliminar
+            </button>
+
+            <a href="{% url 'panel_producto_editar' producto.id %}" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
