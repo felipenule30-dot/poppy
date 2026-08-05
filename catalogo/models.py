@@ -38,17 +38,6 @@ class Producto(models.Model):
     destacado = models.BooleanField(default=False)
     activo = models.BooleanField(default=True)
 
-    costo_adquisicion = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
-    tiempo_adquisicion_dias = models.PositiveIntegerField(default=0)
-    fecha_ultima_adquisicion = models.DateField(null=True, blank=True)
-    proveedor = models.ForeignKey(
-        "proveedores.Proveedor",
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="productos"
-    )
-    stock_objetivo = models.PositiveIntegerField(default=0)
     peso_gramos = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     notas_internas = models.TextField(blank=True)
 

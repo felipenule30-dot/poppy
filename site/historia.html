@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Historia — Poppy Cartagena</title>
+<meta name="description" content="La historia de Poppy Cartagena, marca de artesanías colombianas que celebra el oficio y el territorio caribeño."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/></noscript>
+<style>
+:root{--blue:#A5B7D7;--stone:#f4f2ef;--beige:#EAE5E0;--white:#fff;--line:#ddd7d1;--text:#6f6f73;--dark:#3f434b;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Work Sans',sans-serif;--shadow:0 10px 30px rgba(40,40,45,0.07);--max:1200px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--stone);color:var(--text);line-height:1.65}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(221,215,209,0.7)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--serif);font-size:42px;line-height:1;color:var(--blue);font-weight:400}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--dark);transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue)}
+.nav-cta{background:var(--blue);color:#fff;padding:10px 20px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.label{font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+
+/* HERO */
+.hero{position:relative;height:560px;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(63,67,75,0.7) 0%,rgba(63,67,75,0.15) 60%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 60px;max-width:700px}
+.hero-content h1{font-family:var(--serif);font-size:clamp(48px,7vw,90px);font-weight:300;color:#fff;line-height:1;margin-bottom:16px}
+.hero-content p{font-size:16px;color:rgba(255,255,255,0.85);max-width:420px;line-height:1.6}
+
+/* INTRO COLUMN */
+.intro-col{padding:80px 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro-text h2{font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--dark);line-height:1.1;margin-bottom:20px}
+.intro-text p{font-size:15px;color:var(--text);margin-bottom:16px;line-height:1.75}
+.intro-img{border-radius:24px;overflow:hidden;aspect-ratio:4/5}
+.intro-img img{width:100%;height:100%;object-fit:cover}
+
+/* QUOTE */
+.quote-band{background:var(--blue);padding:72px 60px;text-align:center}
+.quote-band blockquote{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:300;font-style:italic;color:#fff;max-width:760px;margin:0 auto;line-height:1.35}
+.quote-band cite{display:block;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-top:20px;font-style:normal}
+
+/* PILLARS */
+.pillars{padding:80px 0;background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pillars h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;color:var(--dark);text-align:center;margin-bottom:52px}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.pillar{border:1px solid var(--line);border-radius:20px;padding:36px 28px;background:var(--stone)}
+.pillar-icon{font-size:32px;margin-bottom:16px}
+.pillar h3{font-family:var(--serif);font-size:24px;color:var(--dark);font-weight:400;margin-bottom:10px}
+.pillar p{font-size:13px;color:var(--text);line-height:1.65}
+
+/* ARTISANS */
+.artisans{padding:80px 0}
+.artisans h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;color:var(--dark);margin-bottom:12px}
+.artisans-sub{font-size:15px;max-width:520px;margin-bottom:48px}
+.artisan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.artisan-card{border-radius:20px;overflow:hidden;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}
+.artisan-img{height:260px;overflow:hidden;background:var(--beige)}
+.artisan-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.artisan-card:hover .artisan-img img{transform:scale(1.04)}
+.artisan-body{padding:20px 22px}
+.artisan-body h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dark);margin-bottom:6px}
+.artisan-body p{font-size:12px;color:var(--text);line-height:1.55}
+
+/* CTA */
+.cta-band{background:linear-gradient(135deg,#c8d3e8,#a5b7d7);border-radius:24px;padding:60px 48px;color:#fff;margin:0 0 80px;display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.cta-band h2{font-family:var(--serif);font-size:clamp(28px,3vw,44px);color:#fff;margin:0;font-weight:300}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;transition:.2s;border:1px solid transparent}
+.btn-white{background:#fff;color:var(--dark)}
+.btn-white:hover{background:var(--beige)}
+
+footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28px 48px}
+.footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--text)}
+.footer-logo{font-family:var(--serif);font-size:32px;color:var(--blue)}
+
+@media(max-width:900px){
+  .intro-col{grid-template-columns:1fr;gap:36px}
+  .pillars-grid,.artisan-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .wrap{padding:0 18px}
+  .hero-content{padding:0 28px}
+  .pillars-grid,.artisan-grid{grid-template-columns:1fr}
+  .quote-band{padding:48px 28px}
+  .cta-band{padding:36px 24px}
+  .logo{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">poppy</a>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="historia.html" class="active">Historia</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="ubicacion.html">Ubicación</a>
+      <a href="https://www.instagram.com/poppy.cartagena" target="_blank">Instagram</a>
+    </div>
+    <a href="catalogo.html" class="nav-cta">Ver catálogo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="media/web/home/tienda/WhatsApp_Image_2026-03-14_at_00.04.10.jpeg" alt="Tienda Poppy Cartagena"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="label" style="color:rgba(255,255,255,0.75)">Nuestra historia</p>
+    <h1>Territorio<br>y oficio</h1>
+    <p>Una marca nacida del Caribe colombiano para celebrar el arte de las manos que tejen identidad.</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <div class="wrap">
+    <div class="intro-col">
+      <div class="intro-text">
+        <p class="label">Quiénes somos</p>
+        <h2>Una boutique conceptual en el corazón de Cartagena</h2>
+        <p>POPPY es el puente curado entre la maestría de las comunidades artesanales más apartadas de Colombia y el mercado de lujo global. Cada pieza que entra a nuestra tienda está seleccionada con un criterio claro: técnica excepcional, diseño contemporáneo y materiales 100% naturales.</p>
+        <p>No solo comercializamos objetos — narramos historias a través de piezas de diseño premium elaboradas con fibras naturales, preservando técnicas ancestrales que enfrentan el riesgo de desaparecer.</p>
+        <p>Nuestro catálogo abarca bolsos tejidos en fibras guajiras, objetos de hogar elaborados con materiales naturales del Caribe y sombreros de fino acabado artesanal — piezas únicas que no se encuentran en ningún otro lugar.</p>
+      </div>
+      <div class="intro-img">
+        <img src="media/web/home/intro/WhatsApp_Image_2026-03-13_at_23.39.27.jpeg" alt="Artesanía Poppy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>
+    "No solo comercializamos objetos — narramos historias a través de piezas de diseño premium que preservan técnicas ancestrales en riesgo de desaparecer."
+  </blockquote>
+  <cite>Poppy Cartagena — Narrativas Artesanales</cite>
+</div>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="wrap">
+    <h2>El diferencial Poppy</h2>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <h3>Curaduría de excelencia</h3>
+        <p>Ofrecemos una selección sofisticada y moderna de artesanía colombiana. Reunimos en un solo espacio las mejores piezas en técnica, diseño y mano de obra — ahorrando tiempo y esfuerzo al cliente exigente que busca lo genuino.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <h3>Hospitalidad auténtica</h3>
+        <p>La tienda física es un destino imperdible en Cartagena. Brindamos asesoría honesta, cercana y experta: el cliente no solo compra un producto, sino que aprende sobre la cultura de Colombia.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🌿</div>
+        <h3>Triple impacto</h3>
+        <p><strong>Social:</strong> oportunidades económicas en zonas de difícil acceso. <strong>Cultural:</strong> valorización del conocimiento ancestral. <strong>Ambiental:</strong> consumo consciente con procesos sostenibles y materiales 100% naturales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTISANS -->
+<section class="artisans">
+  <div class="wrap">
+    <p class="label">Las manos detrás</p>
+    <h2>Artesanas y artesanos</h2>
+    <p class="artisans-sub">Trabajamos directamente con comunidades artesanales de zonas de difícil acceso, sin intermediarios. Cada pieza llega con la historia de quien la hizo.</p>
+    <div class="artisan-grid">
+      <div class="artisan-card">
+        <div class="artisan-img">
+          <img src="media/web/home/proceso/WhatsApp_Image_2026-03-14_at_00.23.41.jpeg" alt="Artesana tejiendo"/>
+        </div>
+        <div class="artisan-body">
+          <h4>Maestras tejedoras</h4>
+          <p>Mujeres guajiras que han transmitido el arte del tejido de generación en generación. Sus diseños son un idioma visual único en el mundo.</p>
+        </div>
+      </div>
+      <div class="artisan-card">
+        <div class="artisan-img">
+          <img src="media/web/home/proceso/WhatsApp_Image_2026-03-14_at_00.23.59.jpeg" alt="Detalle de tejido artesanal"/>
+        </div>
+        <div class="artisan-body">
+          <h4>Detalle y precisión</h4>
+          <p>Cada nudo, cada color y cada patrón geométrico responde a un conocimiento ancestral que no puede replicarse en serie.</p>
+        </div>
+      </div>
+      <div class="artisan-card">
+        <div class="artisan-img">
+          <img src="media/web/home/proceso/WhatsApp_Image_2026-03-14_at_00.24.10.jpeg" alt="Bolsos artesanales Poppy"/>
+        </div>
+        <div class="artisan-body">
+          <h4>Colecciones vivas</h4>
+          <p>Nuestro catálogo cambia con las temporadas y con los artesanos que incorporamos. Siempre hay algo nuevo por descubrir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MERCADO Y VISIÓN -->
+<section style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+      <div>
+        <p class="label">A quién servimos</p>
+        <h2 style="font-size:clamp(30px,3.5vw,46px)">Nuestro mercado</h2>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:20px">
+          <div style="border:1px solid var(--line);border-radius:16px;padding:24px 26px;background:var(--stone)">
+            <p style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">B2C — Cliente Final</p>
+            <p style="font-size:14px;color:var(--dark);line-height:1.6;margin:0">Turistas internacionales de alto perfil — EE.UU., Canadá, México, Europa y Suramérica — que buscan lujo auténtico, regalos sofisticados y piezas con significado real.</p>
+          </div>
+          <div style="border:1px solid var(--line);border-radius:16px;padding:24px 26px;background:var(--stone)">
+            <p style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">B2B — Corporativo</p>
+            <p style="font-size:14px;color:var(--dark);line-height:1.6;margin:0">Hoteles boutique y casas vacacionales que buscan decoración exclusiva. Mayoristas y distribuidores nacionales e internacionales. Pedidos corporativos con logística garantizada.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="label">Hacia dónde vamos</p>
+        <h2 style="font-size:clamp(30px,3.5vw,46px)">Visión de futuro</h2>
+        <p style="margin-top:16px">POPPY busca consolidarse como la marca referente de la narrativa artesanal colombiana a nivel global — capitalizando su guía de estilo propia y expandiendo su red de distribución internacional.</p>
+        <p>Siempre manteniendo el equilibrio entre el diseño moderno y el respeto profundo por la tradición. Canales de venta: tienda física, WhatsApp, envíos nacionales e internacionales.</p>
+        <a href="ubicacion.html" class="btn" style="background:var(--blue);color:#fff;margin-top:12px;display:inline-flex">Visítanos en Cartagena</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="wrap">
+  <div class="cta-band">
+    <div>
+      <h2>Visítanos en<br>Cartagena</h2>
+      <p style="color:rgba(255,255,255,0.85);margin:8px 0 0">Calle Estanco del Tabaco # 35 - 45 · Centro Histórico</p>
+    </div>
+    <a href="ubicacion.html" class="btn btn-white">Cómo llegar</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">poppy</span>
+    <span>© Poppy Cartagena · Diseño, oficio y territorio.</span>
+    <span>poppy.cartagena@gmail.com · +57 314 357 2456</span>
+  </div>
+</footer>
+
+</body>
+</html>

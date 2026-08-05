@@ -26,9 +26,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'jazzmin',
+    'core',
     'web',
     'artesanos',
     'catalogo',
+    'proveedores',
 ]
 
 MIDDLEWARE = [
