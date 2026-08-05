@@ -67,21 +67,6 @@
             </p>
 
             <div style="margin-top: 28px; display:flex; gap:12px; flex-wrap:wrap;">
-                <a
-                    class="btn btn-primary"
-                    href="{% url 'add_to_cart' producto.id %}"
-                >
-                    Añadir al carrito
-                </a>
-
-                <a
-                    class="btn btn-outline-dark"
-                    href="https://wa.me/573143572456?text=Hola,%20me%20interesa%20el%20producto%20{{ producto.nombre|urlencode }}.%20%C2%BFSigue%20disponible?"
-                    target="_blank"
-                >
-                    Comprar por WhatsApp
-                </a>
-
                 {% if producto.coleccion %}
                     <a
                         class="btn btn-outline-dark"
@@ -90,6 +75,7 @@
                         Volver a la colección
                     </a>
                 {% endif %}
+                <a class="btn btn-outline-dark" href="/colecciones/">Ver catálogo</a>
             </div>
         </div>
     </div>

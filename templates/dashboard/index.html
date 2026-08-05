@@ -1,270 +1,239 @@
 {% extends "dashboard/base.html" %}
 {% load money_filters %}
 
+{% block page_title %}Dashboard{% endblock %}
+{% block page_meta %}Resumen del negocio{% endblock %}
+{% block nav_dashboard %}active{% endblock %}
+
 {% block content %}
 
-<div class="topbar">
+<div class="section-header">
     <div>
         <h1>Dashboard</h1>
-        <div class="meta">Resumen ejecutivo del negocio</div>
+        <div class="sub">Resumen ejecutivo · Poppy Cartagena</div>
     </div>
 </div>
 
-<div class="card" style="margin-bottom: 24px;">
-    <form method="get" style="display:flex; gap:12px; flex-wrap:wrap; align-items:end;">
+<!-- Filtro de fechas -->
+<div class="filter-bar">
+    <form method="get" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;">
         <div>
-            <label>Fecha inicio</label>
-            <input type="date" name="fecha_inicio" value="{{ fecha_inicio }}" style="padding:12px; min-width:180px;">
+            <label>Desde</label>
+            <input type="date" name="fecha_inicio" value="{{ fecha_inicio }}">
         </div>
-
         <div>
-            <label>Fecha fin</label>
-            <input type="date" name="fecha_fin" value="{{ fecha_fin }}" style="padding:12px; min-width:180px;">
+            <label>Hasta</label>
+            <input type="date" name="fecha_fin" value="{{ fecha_fin }}">
         </div>
-
-        <div>
-            <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:var(--accent); color:white;">
-                Aplicar filtro
-            </button>
-        </div>
-
-        <div>
-            <a href="{% url 'panel_dashboard' %}" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
-                Limpiar
-            </a>
-        </div>
+        <button type="submit" class="btn btn-primary">Aplicar</button>
+        <a href="{% url 'panel_dashboard' %}" class="btn btn-ghost">Limpiar</a>
     </form>
 </div>
 
-<section class="grid grid-4" style="margin-bottom: 24px;">
-    <div class="card kpi">
-        <div class="kpi-label">Facturación</div>
-        <div class="kpi-value">{{ total_facturado|cop }}</div>
+<!-- KPIs principales -->
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-label">💰 Facturación</div>
+        <div class="kpi-value good">{{ total_facturado|cop }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Ventas</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🧾 Ventas directas</div>
         <div class="kpi-value">{{ total_ventas }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Ticket promedio</div>
+    <div class="kpi-card">
+        <div class="kpi-label">📊 Ticket promedio</div>
         <div class="kpi-value">{{ ticket_promedio|cop }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Pedidos online</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🛒 Pedidos online</div>
         <div class="kpi-value">{{ total_pedidos }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Clientes</div>
+    <div class="kpi-card">
+        <div class="kpi-label">👥 Clientes</div>
         <div class="kpi-value">{{ total_clientes }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Clientes recurrentes</div>
-        <div class="kpi-value">{{ clientes_recurrentes }}</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🔁 Clientes recurrentes</div>
+        <div class="kpi-value good">{{ clientes_recurrentes }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Productos activos</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🛍️ Productos activos</div>
         <div class="kpi-value">{{ total_productos }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Proveedores activos</div>
-        <div class="kpi-value">{{ total_proveedores }}</div>
-    </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Valor inventario</div>
+    <div class="kpi-card">
+        <div class="kpi-label">📦 Valor inventario</div>
         <div class="kpi-value">{{ valor_inventario|cop }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Stock bajo</div>
-        <div class="kpi-value" style="color:#c96b16;">{{ stock_bajo }}</div>
+    <div class="kpi-card">
+        <div class="kpi-label">⚠️ Stock bajo</div>
+        <div class="kpi-value warn">{{ stock_bajo }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Agotados</div>
-        <div class="kpi-value" style="color:#b42318;">{{ agotados }}</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🚨 Agotados</div>
+        <div class="kpi-value danger">{{ agotados }}</div>
     </div>
-
-    <div class="card kpi">
-        <div class="kpi-label">Lead time promedio</div>
-        <div class="kpi-value">{{ lead_time_promedio|floatformat:1 }} días</div>
+    <div class="kpi-card">
+        <div class="kpi-label">🏭 Proveedores</div>
+        <div class="kpi-value">{{ total_proveedores }}</div>
     </div>
-</section>
+    <div class="kpi-card">
+        <div class="kpi-label">⏱️ Lead time prom.</div>
+        <div class="kpi-value">{{ lead_time_promedio|floatformat:1 }}<small style="font-size:14px;font-weight:600;color:#64748b"> días</small></div>
+    </div>
+</div>
 
-<section class="grid grid-2" style="margin-bottom: 24px;">
+<!-- Canal de ventas + Productos más vendidos -->
+<div class="grid-2">
     <div class="card">
-        <h3>Canal de ventas</h3>
-
+        <h3>📡 Canal de ventas</h3>
         <div class="table-like">
             {% for item in canal_ventas %}
-                <div class="row">
-                    <div>
-                        <strong>{{ item.canal }}</strong><br>
-                        <span class="muted">{{ item.total_ventas }} ventas</span>
-                    </div>
-                    <div><strong>{{ item.total_facturado|cop }}</strong></div>
+            <div class="row">
+                <div>
+                    <div class="row-label">{{ item.canal }}</div>
+                    <div class="row-sub">{{ item.total_ventas }} ventas</div>
                 </div>
+                <div class="row-val">{{ item.total_facturado|cop }}</div>
+            </div>
             {% empty %}
-                <p class="muted">No hay ventas en ese rango.</p>
+            <div class="empty">Sin ventas en este rango</div>
             {% endfor %}
         </div>
     </div>
 
     <div class="card">
-        <h3>Productos más vendidos</h3>
-
+        <h3>🏆 Productos más vendidos</h3>
         <div class="table-like">
             {% for item in productos_mas_vendidos %}
-                <div class="row">
-                    <div>{{ item.producto__nombre }}</div>
-                    <div><strong>{{ item.total_vendido }}</strong></div>
-                </div>
+            <div class="row">
+                <div class="row-label">{{ item.producto__nombre }}</div>
+                <div class="row-val">{{ item.total_vendido }} uds.</div>
+            </div>
             {% empty %}
-                <p class="muted">No hay ventas en ese rango.</p>
+            <div class="empty">Sin ventas en este rango</div>
             {% endfor %}
         </div>
     </div>
-</section>
+</div>
 
-<section class="grid grid-2" style="margin-bottom: 24px;">
+<!-- Margen + Bajo stock objetivo -->
+<div class="grid-2">
     <div class="card">
-        <h3>Productos con mayor margen</h3>
-        <p class="muted" style="margin-top:0;">Margen promedio: {{ margen_promedio|cop }}</p>
-
+        <h3>💎 Productos con mayor margen</h3>
+        <p style="font-size:12px;color:#94a3b8;margin-bottom:14px">Margen promedio: <strong>{{ margen_promedio|cop }}</strong></p>
         <div class="table-like">
             {% for producto in productos_mayor_margen %}
-                <div class="row">
-                    <div>
-                        <strong>{{ producto.nombre }}</strong><br>
-                        <span class="muted">
-                            Venta: {{ producto.precio|cop }} · Costo: {{ producto.costo_adquisicion|cop }}
-                        </span>
-                    </div>
-                    <div>
-                        <strong>{{ producto.margen|cop }}</strong><br>
-                        <span class="muted">{{ producto.margen_pct|floatformat:1 }}%</span>
-                    </div>
+            <div class="row">
+                <div>
+                    <div class="row-label">{{ producto.nombre }}</div>
+                    <div class="row-sub">Venta {{ producto.precio|cop }} · Costo {{ producto.costo_adquisicion|cop }}</div>
                 </div>
+                <div style="text-align:right">
+                    <div class="row-val" style="color:#16a34a">{{ producto.margen|cop }}</div>
+                    <div class="row-sub">{{ producto.margen_pct|floatformat:1 }}%</div>
+                </div>
+            </div>
             {% empty %}
-                <p class="muted">No hay productos suficientes para calcular margen.</p>
+            <div class="empty">Sin datos de margen</div>
             {% endfor %}
         </div>
     </div>
 
     <div class="card">
-        <h3>Productos bajo stock objetivo</h3>
-
+        <h3>📉 Bajo stock objetivo</h3>
         <div class="table-like">
             {% for item in productos_bajo_objetivo %}
-                <div class="row">
-                    <div>
-                        <strong>{{ item.producto.nombre }}</strong><br>
-                        <span class="muted">Objetivo: {{ item.stock_objetivo_val }}</span>
-                    </div>
-                    <div>
-                        <strong>{{ item.stock_actual }}</strong><br>
-                        <span class="muted">{{ item.diferencia_objetivo }}</span>
-                    </div>
+            <div class="row">
+                <div>
+                    <div class="row-label">{{ item.producto.nombre }}</div>
+                    <div class="row-sub">Objetivo: {{ item.stock_objetivo_val }}</div>
                 </div>
+                <div style="text-align:right">
+                    <div class="row-val warn">{{ item.stock_actual }}</div>
+                    <div class="row-sub">{{ item.diferencia_objetivo }}</div>
+                </div>
+            </div>
             {% empty %}
-                <p class="muted">No hay productos por debajo del objetivo.</p>
+            <div class="empty">✅ Todo en orden</div>
             {% endfor %}
         </div>
     </div>
-</section>
+</div>
 
-<section class="grid grid-2" style="margin-bottom: 24px;">
+<!-- Agotados + Resumen rápido -->
+<div class="grid-2">
     <div class="card">
-        <h3>Productos agotados</h3>
-
+        <h3>🚨 Productos agotados</h3>
         <div class="table-like">
             {% for item in productos_agotados %}
-                <div class="row">
-                    <div>{{ item.producto.nombre }}</div>
-                    <div class="danger"><strong>0</strong></div>
-                </div>
+            <div class="row">
+                <div class="row-label">{{ item.producto.nombre }}</div>
+                <span class="badge badge-red">0 uds.</span>
+            </div>
             {% empty %}
-                <p class="muted">No hay productos agotados.</p>
+            <div class="empty">✅ Sin productos agotados</div>
             {% endfor %}
         </div>
     </div>
 
     <div class="card">
-        <h3>Resumen rápido</h3>
-
+        <h3>📋 Resumen rápido</h3>
         <div class="table-like">
             <div class="row">
-                <div>Ventas registradas</div>
-                <div><strong>{{ total_ventas }}</strong></div>
+                <div class="row-label">Ventas registradas</div>
+                <div class="row-val">{{ total_ventas }}</div>
             </div>
-
             <div class="row">
-                <div>Pedidos online</div>
-                <div><strong>{{ total_pedidos }}</strong></div>
+                <div class="row-label">Pedidos online</div>
+                <div class="row-val">{{ total_pedidos }}</div>
             </div>
-
             <div class="row">
-                <div>Clientes recurrentes</div>
-                <div><strong>{{ clientes_recurrentes }}</strong></div>
+                <div class="row-label">Clientes recurrentes</div>
+                <div class="row-val">{{ clientes_recurrentes }}</div>
             </div>
-
             <div class="row">
-                <div>Productos bajo objetivo</div>
-                <div><strong>{{ bajo_objetivo }}</strong></div>
+                <div class="row-label">Productos bajo objetivo</div>
+                <div class="row-val {% if bajo_objetivo > 0 %}warn{% endif %}">{{ bajo_objetivo }}</div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
-<section class="grid grid-2">
+<!-- Ventas y pedidos recientes -->
+<div class="grid-2">
     <div class="card">
-        <h3>Ventas recientes</h3>
-
+        <h3>🕐 Ventas recientes</h3>
         <div class="table-like">
             {% for venta in ventas_recientes %}
-                <div class="row">
-                    <div>
-                        <strong>Venta #{{ venta.id }}</strong><br>
-                        <span class="muted">{{ venta.cliente.nombre|default:"Sin cliente" }}</span>
-                    </div>
-                    <div>
-                        <strong>{{ venta.total|cop }}</strong><br>
-                        <span class="muted">{{ venta.created_at|date:"d/m/Y H:i" }}</span>
-                    </div>
+            <div class="row">
+                <div>
+                    <div class="row-label">Venta #{{ venta.id }}</div>
+                    <div class="row-sub">{{ venta.cliente.nombre|default:"Sin cliente" }} · {{ venta.created_at|date:"d/m/Y H:i" }}</div>
                 </div>
+                <div class="row-val">{{ venta.total|cop }}</div>
+            </div>
             {% empty %}
-                <p class="muted">No hay ventas recientes.</p>
+            <div class="empty">Sin ventas recientes</div>
             {% endfor %}
         </div>
     </div>
 
     <div class="card">
-        <h3>Pedidos recientes</h3>
-
+        <h3>🕐 Pedidos recientes</h3>
         <div class="table-like">
             {% for pedido in pedidos_recientes %}
-                <div class="row">
-                    <div>
-                        <strong>Pedido #{{ pedido.id }}</strong><br>
-                        <span class="muted">{{ pedido.nombre_cliente }}</span>
-                    </div>
-                    <div>
-                        <strong>{{ pedido.total|cop }}</strong><br>
-                        <span class="muted">{{ pedido.created_at|date:"d/m/Y H:i" }}</span>
-                    </div>
+            <div class="row">
+                <div>
+                    <div class="row-label">Pedido #{{ pedido.id }}</div>
+                    <div class="row-sub">{{ pedido.nombre_cliente }} · {{ pedido.created_at|date:"d/m/Y H:i" }}</div>
                 </div>
+                <div class="row-val">{{ pedido.total|cop }}</div>
+            </div>
             {% empty %}
-                <p class="muted">No hay pedidos recientes.</p>
+            <div class="empty">Sin pedidos recientes</div>
             {% endfor %}
         </div>
     </div>
-</section>
+</div>
 
 {% endblock %}

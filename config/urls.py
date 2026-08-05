@@ -8,8 +8,6 @@ urlpatterns = [
     path("", include("web.urls")),
     path("", include("catalogo.urls")),
     path("", include("artesanos.urls")),
-    path("", include("dashboard.urls")),
-    path("", include("pedidos.urls")),
 ]
 
 if settings.DEBUG:
