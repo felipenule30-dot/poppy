@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://poppy-cartagena.pages.dev/sitemap.xml
