@@ -68,7 +68,8 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);font-size:20px;background:var(--stone);color:var(--text);line-height:1.65}
 a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;border-radius:12px}
+.hero img,.logo img,.footer-logo img,.rolling-item img,.artisan-card img,.artisan-img img,.intro-img img{border-radius:0}
 .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(221,215,209,0.7)}
 .nav-inner{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{display:flex;align-items:center}.logo img{height:68px;width:auto;display:block}
@@ -88,11 +89,11 @@ img{max-width:100%;display:block}
 .hero-content p{font-size:18px;color:rgba(255,255,255,0.85);max-width:420px;line-height:1.6}
 
 /* INTRO COLUMN */
-.intro-col{padding:80px 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro-col{padding:80px 0;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .intro-text h2{font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--dark);line-height:1.1;margin-bottom:20px}
 .intro-text p{font-size:17px;color:var(--text);margin-bottom:16px;line-height:1.75}
-.intro-img{border-radius:24px;overflow:hidden;aspect-ratio:4/5}
-.intro-img img{width:100%;height:100%;object-fit:cover}
+.intro-img{border-radius:24px;overflow:hidden}
+.intro-img img{width:100%;height:auto;display:block}
 
 /* QUOTE */
 .quote-band{background:var(--blue);padding:72px 60px;text-align:center}
@@ -108,14 +109,26 @@ img{max-width:100%;display:block}
 .pillar h3{font-family:var(--serif);font-size:24px;color:var(--dark);font-weight:400;margin-bottom:10px}
 .pillar p{font-size:15px;color:var(--text);line-height:1.65}
 
+/* ROLLING GALLERY */
+.rolling-wrap{position:relative;padding:0;margin-bottom:48px}
+.rolling-track{display:flex;gap:10px;align-items:flex-start;overflow-x:auto;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none;padding:0 60px}
+.rolling-track::-webkit-scrollbar{display:none}
+.rolling-item{height:280px;width:auto;flex-shrink:0;border-radius:14px;overflow:hidden}
+.rolling-item img{height:100%;width:auto;display:block;transition:.3s}
+.rolling-item:hover img{transform:scale(1.04)}
+.roll-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(255,255,255,0.95);border:1px solid var(--line);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:var(--dark);box-shadow:0 2px 16px rgba(0,0,0,0.12);transition:.2s;padding:0;line-height:1}
+.roll-btn:hover{background:var(--white);box-shadow:0 4px 24px rgba(0,0,0,0.2);transform:translateY(-50%) scale(1.06)}
+.roll-prev{left:8px}
+.roll-next{right:8px}
+
 /* ARTISANS */
 .artisans{padding:80px 0}
 .artisans h2{font-family:var(--serif);font-size:clamp(36px,4vw,52px);font-weight:300;color:var(--dark);margin-bottom:12px}
 .artisans-sub{font-size:17px;max-width:520px;margin-bottom:48px}
-.artisan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.artisan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
 .artisan-card{border-radius:20px;overflow:hidden;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}
-.artisan-img{height:260px;overflow:hidden;background:var(--beige)}
-.artisan-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.artisan-img{overflow:hidden}
+.artisan-img img{width:100%;height:auto;display:block;transition:.4s}
 .artisan-card:hover .artisan-img img{transform:scale(1.04)}
 .artisan-body{padding:20px 22px}
 .artisan-body h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--dark);margin-bottom:6px}
@@ -130,7 +143,7 @@ img{max-width:100%;display:block}
 
 footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28px 48px}
 .footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--text)}
-.footer-logo{font-family:var(--serif);font-size:32px;color:var(--blue)}
+.footer-logo img{height:48px;width:auto;display:block}
 
 @media(max-width:900px){
   .intro-col{grid-template-columns:1fr;gap:36px}
@@ -224,6 +237,13 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
   </div>
 </section>
 
+<!-- FOTO TIRA productos entre pilares y artesanas -->
+<div style="display:flex;gap:4px;align-items:flex-start">
+  <div style="flex:1.2;border-radius:12px;overflow:hidden"><img src="media/galeria/productos/DSCF9875.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Artesanía Poppy"/></div>
+  <div style="flex:1;border-radius:12px;overflow:hidden"><img src="media/galeria/lifestyle/DSCF0072.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Poppy Cartagena"/></div>
+  <div style="flex:1.2;border-radius:12px;overflow:hidden"><img src="media/galeria/productos/DSCF3940.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Artesanía Poppy"/></div>
+</div>
+
 <!-- ARTISANS -->
 <section class="artisans">
   <div class="wrap">
@@ -233,7 +253,7 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
     <div class="artisan-grid">
       <div class="artisan-card">
         <div class="artisan-img">
-          <img src="media/galeria/lifestyle/DSC03945.jpg" alt="Artesana tejiendo"/>
+          <img src="media/galeria/productos/DSCF9849.jpg" alt="Artesanía Poppy"/>
         </div>
         <div class="artisan-body">
           <h4>Maestras tejedoras</h4>
@@ -242,7 +262,7 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
       </div>
       <div class="artisan-card">
         <div class="artisan-img">
-          <img src="media/galeria/lifestyle/DSC03950.jpg" alt="Detalle de tejido artesanal"/>
+          <img src="media/galeria/productos/DSCF9856.jpg" alt="Detalle artesanía Poppy"/>
         </div>
         <div class="artisan-body">
           <h4>Detalle y precisión</h4>
@@ -261,6 +281,14 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
     </div>
   </div>
 </section>
+
+<!-- FOTO TIRA 4 imágenes entre artesanas y mercado -->
+<div style="display:flex;gap:4px;align-items:flex-start">
+  <div style="flex:1;border-radius:12px;overflow:hidden"><img src="media/galeria/productos/DSCF9748.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Artesanía Poppy"/></div>
+  <div style="flex:1;border-radius:12px;overflow:hidden"><img src="media/galeria/lifestyle/DSCF9932.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Poppy Cartagena"/></div>
+  <div style="flex:1;border-radius:12px;overflow:hidden"><img src="media/galeria/productos/DSCF4014.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Artesanía Poppy"/></div>
+  <div style="flex:1;border-radius:12px;overflow:hidden"><img src="media/galeria/lifestyle/DSCF3937.jpg" style="width:100%;height:auto;display:block" loading="lazy" alt="Poppy Cartagena"/></div>
+</div>
 
 <!-- MERCADO Y VISIÓN -->
 <section style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0">
@@ -304,11 +332,17 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
 
 <footer>
   <div class="footer-inner">
-    <span class="footer-logo">poppy</span>
+    <a href="index.html" class="footer-logo"><img src="media/logo.png" alt="Poppy Cartagena"/></a>
     <span>© Poppy Cartagena · Diseño, oficio y territorio.</span>
     <span>poppy.cartagena@gmail.com · +57 314 357 2456</span>
   </div>
 </footer>
 
+<script>
+function scrollRoll(btn, dir) {
+  const track = btn.closest('.rolling-wrap').querySelector('.rolling-track');
+  track.scrollBy({ left: dir * 640, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
