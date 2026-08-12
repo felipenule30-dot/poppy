@@ -1,0 +1,28 @@
+# Django
+*.py
+*.pyc
+__pycache__/
+*.sqlite3
+db.sqlite3
+requirements.txt
+manage.py
+
+# Django app folders
+artesanos/
+catalogo/
+clientes/
+compras/
+config/
+contabilidad/
+core/
+dashboard/
+inventario/
+pedidos/
+proveedores/
+templates/
+ventas/
+web/
+
+# System
+.DS_Store
+Thumbs.db
