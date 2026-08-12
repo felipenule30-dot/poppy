@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -113,7 +113,7 @@ img{max-width:100%;display:block}
 .info-card{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:40px;box-shadow:var(--shadow)}
 .info-card h2{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--dark);margin-bottom:28px}
 .info-row{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
-.info-icon{width:40px;height:40px;background:rgba(165,183,215,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.info-icon{display:none}
 .info-row-body{}
 .info-row-body strong{display:block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
 .info-row-body p,.info-row-body a{font-size:14px;color:var(--dark);line-height:1.5}
@@ -144,7 +144,7 @@ img{max-width:100%;display:block}
 .contact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0 0 72px}
 .contact-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:28px 24px;text-align:center;box-shadow:var(--shadow);transition:.2s}
 .contact-card:hover{transform:translateY(-3px)}
-.contact-card .cc-icon{font-size:28px;margin-bottom:12px}
+.contact-card .cc-icon{display:none}
 .contact-card h3{font-family:var(--serif);font-size:20px;color:var(--dark);font-weight:400;margin-bottom:8px}
 .contact-card p,.contact-card a{font-size:13px;color:var(--text)}
 .contact-card a:hover{color:var(--blue)}
@@ -206,7 +206,6 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
       <h2>Información de la tienda</h2>
 
       <div class="info-row">
-        <div class="info-icon">📍</div>
         <div class="info-row-body">
           <strong>Dirección</strong>
           <p>Calle Estanco del Tabaco # 35 - 45<br>Centro Histórico, Cartagena de Indias<br>Colombia</p>
@@ -214,19 +213,17 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
       </div>
 
       <div class="info-row">
-        <div class="info-icon">🕐</div>
         <div class="info-row-body">
           <strong>Horario</strong>
           <div class="hours">
-            <div class="hour-row"><span class="day">Lunes – Viernes</span><span class="time">10:00AM – 7:00PM</span></div>
-            <div class="hour-row"><span class="day">Sábado</span><span class="time">10:00AM – 7:00PM</span></div>
+            <div class="hour-row"><span class="day">Lunes – Viernes</span><span class="time">10:00 a.m. – 7:00 p.m.</span></div>
+            <div class="hour-row"><span class="day">Sábado</span><span class="time">10:00 a.m. – 7:00 p.m.</span></div>
             <div class="hour-row"><span class="day">Domingo</span><span class="closed">Cerrado</span></div>
           </div>
         </div>
       </div>
 
       <div class="info-row">
-        <div class="info-icon">📱</div>
         <div class="info-row-body">
           <strong>Teléfono / WhatsApp</strong>
           <p><a href="tel:+573143572456">+57 314 357 2456</a></p>
@@ -234,7 +231,6 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
       </div>
 
       <div class="info-row">
-        <div class="info-icon">✉️</div>
         <div class="info-row-body">
           <strong>Correo electrónico</strong>
           <p><a href="mailto:poppy.cartagena@gmail.com">poppy.cartagena@gmail.com</a></p>
@@ -242,7 +238,6 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
       </div>
 
       <div class="info-row">
-        <div class="info-icon">📸</div>
         <div class="info-row-body">
           <strong>Instagram</strong>
           <p><a href="https://www.instagram.com/poppy.cartagena" target="_blank">@poppy.cartagena</a></p>
@@ -281,17 +276,14 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
 <div class="wrap">
   <div class="contact-row">
     <div class="contact-card">
-      <div class="cc-icon">📞</div>
       <h3>Llámanos</h3>
       <p><a href="tel:+573143572456">+57 314 357 2456</a></p>
     </div>
     <div class="contact-card">
-      <div class="cc-icon">✉️</div>
       <h3>Escríbenos</h3>
       <p><a href="mailto:poppy.cartagena@gmail.com">poppy.cartagena@gmail.com</a></p>
     </div>
     <div class="contact-card">
-      <div class="cc-icon">📸</div>
       <h3>Instagram</h3>
       <p><a href="https://www.instagram.com/poppy.cartagena" target="_blank">@poppy.cartagena</a></p>
     </div>
