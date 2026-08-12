@@ -125,12 +125,21 @@ p{margin-bottom:14px;font-size:17px}
 .split-img{border-radius:var(--r);overflow:hidden;min-height:460px}
 .split-img img{width:100%;height:100%;object-fit:cover}
 
-/* GALERÍA */
-.galeria-titulo{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--dark);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.galeria{columns:4;column-gap:12px}
-.galeria-item{break-inside:avoid;margin-bottom:12px;border-radius:16px;overflow:hidden;background:var(--beige)}
+/* TIRA LIFESTYLE */
+.tira{display:flex;gap:4px;height:340px;overflow:hidden}
+.tira-item{flex:1;overflow:hidden;min-width:0}
+.tira-item img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.tira-item:hover img{transform:scale(1.05)}
+
+/* GALERÍA PRODUCTOS */
+.galeria{columns:4;column-gap:10px}
+.galeria-item{break-inside:avoid;margin-bottom:10px;border-radius:14px;overflow:hidden;background:var(--beige)}
 .galeria-item img{width:100%;display:block;transition:.4s}
 .galeria-item:hover img{transform:scale(1.03)}
+
+/* GALERÍA LIFESTYLE */
+.galeria-ls{columns:3;column-gap:10px}
+.galeria-ls .galeria-item{border-radius:18px}
 
 /* PILARES */
 .pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
@@ -201,7 +210,7 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img" src="media/web/home/tienda/WhatsApp_Image_2026-03-14_at_00.20.57.jpeg" alt="Tienda Poppy Cartagena — Centro Histórico"/>
+  <img class="hero-img" src="media/galeria/lifestyle/DSCF3922.jpg" alt="Tienda Poppy Cartagena — Centro Histórico"/>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-label">Centro Histórico · Cartagena · Colombia</p>
@@ -229,78 +238,68 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
         <a href="historia.html" class="btn btn-outline-blue" style="margin-top:8px">Nuestra historia</a>
       </div>
       <div class="split-img">
-        <img src="media/web/home/intro/WhatsApp_Image_2026-03-13_at_23.39.27.jpeg" alt="Artesanía colombiana Poppy" loading="lazy"/>
+        <img src="media/galeria/lifestyle/DSCF9928.jpg" alt="Artesanía colombiana Poppy" loading="lazy"/>
       </div>
     </div>
   </div>
 </section>
 
-<!-- GALERÍA -->
-<section class="section-sm" style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<!-- TIRA LIFESTYLE -->
+<div class="tira">
+  <div class="tira-item"><img src="media/galeria/lifestyle/DSC03945.jpg" alt="Poppy Cartagena" loading="lazy"/></div>
+  <div class="tira-item"><img src="media/galeria/lifestyle/DSC03950.jpg" alt="Poppy Cartagena" loading="lazy"/></div>
+  <div class="tira-item"><img src="media/galeria/lifestyle/DSCF0029.jpg" alt="Poppy Cartagena" loading="lazy"/></div>
+  <div class="tira-item"><img src="media/galeria/lifestyle/DSCF0044.jpg" alt="Poppy Cartagena" loading="lazy"/></div>
+  <div class="tira-item"><img src="media/galeria/lifestyle/DSCF0053.jpg" alt="Poppy Cartagena" loading="lazy"/></div>
+</div>
+
+<!-- PRODUCTOS -->
+<section class="section" style="background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
-    <div style="margin-bottom:48px">
-      <p class="label">Piezas únicas</p>
+    <div style="margin-bottom:36px">
+      <p class="label">Colección</p>
       <h2>Artesanía colombiana<br>tejida a mano</h2>
     </div>
-
-    <!-- PRODUCTOS -->
-    <p class="galeria-titulo">Productos</p>
     <div class="galeria">
-      <div class="galeria-item"><img src="media/galeria/productos/01.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/02.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/03.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/04.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/05.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/06.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/07.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/08.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/09.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/10.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/11.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/12.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/13.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/14.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/15.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/16.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/17.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/18.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/19.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/20.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/21.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/22.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/23.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/24.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/productos/25.jpg" alt="Producto artesanal Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-    </div>
-
-    <!-- LIFESTYLE -->
-    <p class="galeria-titulo" style="margin-top:60px">Lifestyle</p>
-    <div class="galeria">
-      <div class="galeria-item"><img src="media/galeria/lifestyle/01.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/02.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/03.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/04.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/05.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/06.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/07.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/08.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/09.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/10.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/11.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/12.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/13.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/14.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/15.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/16.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/17.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/18.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/19.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/20.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/21.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/22.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/23.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/24.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
-      <div class="galeria-item"><img src="media/galeria/lifestyle/25.jpg" alt="Lifestyle Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/89555721-2836-4273-B41D-63126935E772.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF0002.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF0021.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF0025.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF0039.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3940.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3943.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3951.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3968.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3976.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF3989.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF4014.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF4017.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF4031.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9748.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9759.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9761.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9764.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9776.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9783.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9787.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9790.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9805.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9825.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9849.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9856.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9858.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9871.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9875.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9878.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9897.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9916.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9977.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9986.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9988.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9994.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/DSCF9996.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/FOTO PRODUCTO 24 ABRILALL PHOTOSDSCF0010.jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+      <div class="galeria-item"><img src="media/galeria/productos/FOTO PRODUCTO 24 ABRILALL PHOTOSDSCF0010 (1).jpg" alt="Artesanía Poppy" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
     </div>
   </div>
 </section>
@@ -346,6 +345,18 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
   </div>
 </div>
 
+<!-- LIFESTYLE MASONRY -->
+<div style="padding:10px;background:var(--stone)">
+  <div class="galeria-ls">
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF0072.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF3937.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF0029.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF0044.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF0053.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+    <div class="galeria-item"><img src="media/galeria/lifestyle/DSCF9943.jpg" alt="Poppy Cartagena" loading="lazy" onerror="this.closest('.galeria-item').remove()"/></div>
+  </div>
+</div>
+
 <!-- TIENDA -->
 <section class="section-sm">
   <div class="wrap">
@@ -374,7 +385,7 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
         <a href="ubicacion.html" style="color:var(--blue);font-weight:600;font-size:14px">Ver mapa y cómo llegar →</a>
       </div>
       <div class="tienda-img">
-        <img src="media/web/home/tienda/WhatsApp_Image_2026-03-14_at_00.04.10.jpeg" alt="Tienda Poppy Cartagena" loading="lazy"/>
+        <img src="media/galeria/productos/DSCF4031.jpg" alt="Tienda Poppy Cartagena" loading="lazy"/>
       </div>
     </div>
   </div>
@@ -390,16 +401,16 @@ footer{border-top:1px solid var(--line);background:var(--white);padding:32px 28p
     </div>
     <div class="insta-grid">
       <a href="https://www.instagram.com/poppy.cartagena" target="_blank" class="insta-box">
-        <img src="media/web/home/instagram/WhatsApp_Image_2026-03-13_at_23.41.22_3.jpeg" alt="Instagram Poppy Cartagena" loading="lazy"/>
+        <img src="media/galeria/lifestyle/DSC03945.jpg" alt="Instagram Poppy Cartagena" loading="lazy"/>
       </a>
       <a href="https://www.instagram.com/poppy.cartagena" target="_blank" class="insta-box">
-        <img src="media/web/home/instagram/WhatsApp_Image_2026-03-13_at_23.41.22_4.jpeg" alt="Instagram Poppy Cartagena" loading="lazy"/>
+        <img src="media/galeria/lifestyle/DSC03950.jpg" alt="Instagram Poppy Cartagena" loading="lazy"/>
       </a>
       <a href="https://www.instagram.com/poppy.cartagena" target="_blank" class="insta-box">
-        <img src="media/web/home/instagram/WhatsApp_Image_2026-03-13_at_23.41.22_5.jpeg" alt="Instagram Poppy Cartagena" loading="lazy"/>
+        <img src="media/galeria/lifestyle/DSCF9932.jpg" alt="Instagram Poppy Cartagena" loading="lazy"/>
       </a>
       <a href="https://www.instagram.com/poppy.cartagena" target="_blank" class="insta-box">
-        <img src="media/web/home/instagram/WhatsApp_Image_2026-03-13_at_23.41.21_1.jpeg" alt="Instagram Poppy Cartagena" loading="lazy"/>
+        <img src="media/galeria/lifestyle/DSCF9943.jpg" alt="Instagram Poppy Cartagena" loading="lazy"/>
       </a>
     </div>
     <a href="https://www.instagram.com/poppy.cartagena" target="_blank" class="btn btn-outline-blue">Ver Instagram</a>

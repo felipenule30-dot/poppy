@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="section">
+    <div class="section-header">
+        <p class="section-label">Instagram</p>
+
+        <h2 class="editorial-title">
+            {% if contacto and contacto.instagram_titulo_pagina %}
+                {{ contacto.instagram_titulo_pagina }}
+            {% else %}
+                síguenos en Instagram
+            {% endif %}
+        </h2>
+
+        <p>
+            {% if contacto and contacto.instagram_texto_pagina %}
+                {{ contacto.instagram_texto_pagina }}
+            {% else %}
+                Descubre el universo visual de Poppy Cartagena: piezas, procesos, tienda y contexto.
+            {% endif %}
+        </p>
+
+        {% if contacto and contacto.instagram_url %}
+            <div style="margin-top: 20px;">
+                <a class="btn btn-primary" href="{{ contacto.instagram_url }}" target="_blank">
+                    Ir al perfil
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section">
+    <div class="grid grid-2">
+        {% if contacto and contacto.instagram_imagen_1 %}
+            <div
+                class="visual-block"
+                style="
+                    min-height: 460px;
+                    background-image: url('{{ contacto.instagram_imagen_1.url }}');
+                    background-size: cover;
+                    background-position: center;
+                "
+            ></div>
+        {% else %}
+            <div class="visual-block soft-bg-1" style="min-height: 460px;"></div>
+        {% endif %}
+
+        {% if contacto and contacto.instagram_imagen_2 %}
+            <div
+                class="visual-block"
+                style="
+                    min-height: 460px;
+                    background-image: url('{{ contacto.instagram_imagen_2.url }}');
+                    background-size: cover;
+                    background-position: center;
+                "
+            ></div>
+        {% else %}
+            <div class="visual-block soft-bg-2" style="min-height: 460px;"></div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section" style="margin-top:-30px;">
+    <div class="grid grid-2">
+        {% if contacto and contacto.instagram_imagen_3 %}
+            <div
+                class="visual-block"
+                style="
+                    min-height: 460px;
+                    background-image: url('{{ contacto.instagram_imagen_3.url }}');
+                    background-size: cover;
+                    background-position: center;
+                "
+            ></div>
+        {% else %}
+            <div class="visual-block soft-bg-3" style="min-height: 460px;"></div>
+        {% endif %}
+
+        {% if contacto and contacto.instagram_imagen_4 %}
+            <div
+                class="visual-block"
+                style="
+                    min-height: 460px;
+                    background-image: url('{{ contacto.instagram_imagen_4.url }}');
+                    background-size: cover;
+                    background-position: center;
+                "
+            ></div>
+        {% else %}
+            <div class="visual-block warm-block" style="min-height: 460px;"></div>
+        {% endif %}
+    </div>
+</section>
+
+<section class="section">
+    <div class="card" style="padding:34px; border-radius:30px;">
+        <p class="section-label">Universo visual</p>
+        <h2 class="editorial-title">marca, contexto y piezas en movimiento</h2>
+        <p style="max-width:760px;">
+            Instagram funciona como una extensión natural de Poppy:
+            un lugar para mostrar atmósfera, materia, proceso y la sensibilidad
+            visual que rodea cada objeto.
+        </p>
+    </div>
+</section>
+
+<section class="section full-band">
+    <div class="band-content">
+        <p class="section-label light">Instagram</p>
+
+        <h2 style="color:white;">
+            {% if contacto and contacto.instagram_cta_titulo %}
+                {{ contacto.instagram_cta_titulo }}
+            {% else %}
+                explora más en nuestro perfil
+            {% endif %}
+        </h2>
+
+        <p>
+            {% if contacto and contacto.instagram_cta_texto %}
+                {{ contacto.instagram_cta_texto }}
+            {% else %}
+                Síguenos para descubrir nuevas piezas, historias y procesos detrás de cada objeto.
+            {% endif %}
+        </p>
+
+        {% if contacto and contacto.instagram_url %}
+            <div style="margin-top: 22px;">
+                <a class="btn btn-secondary" href="{{ contacto.instagram_url }}" target="_blank">
+                    Abrir Instagram
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

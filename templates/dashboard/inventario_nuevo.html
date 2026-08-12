@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Nuevo inventario</h1>
+        <div class="meta">Crear ficha de inventario para un producto</div>
+    </div>
+</div>
+
+<div class="card" style="max-width: 760px;">
+    {% if productos_disponibles %}
+        <form method="post">
+            {% csrf_token %}
+
+            <div style="display:grid; gap:18px;">
+                <div>
+                    <label>Producto</label>
+                    <select name="producto" required style="width:100%; padding:12px; margin-top:6px;">
+                        <option value="">Selecciona un producto</option>
+                        {% for producto in productos_disponibles %}
+                            <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label>SKU interno</label>
+                    <input type="text" name="sku_interno" style="width:100%; padding:12px; margin-top:6px;">
+                </div>
+
+                <div>
+                    <label>Stock inicial</label>
+                    <input type="number" name="stock_actual" value="0" style="width:100%; padding:12px; margin-top:6px;">
+                </div>
+
+                <div>
+                    <label>Stock mínimo</label>
+                    <input type="number" name="stock_minimo" value="0" style="width:100%; padding:12px; margin-top:6px;">
+                </div>
+
+                <div>
+                    <label>Costo unitario</label>
+                    <input type="number" step="0.01" name="costo_unitario" style="width:100%; padding:12px; margin-top:6px;">
+                </div>
+
+                <div>
+                    <label>Ubicación</label>
+                    <input type="text" name="ubicacion" style="width:100%; padding:12px; margin-top:6px;">
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" name="activo" checked>
+                        Activo
+                    </label>
+                </div>
+
+                <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                    <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:var(--accent); color:white;">
+                        Crear inventario
+                    </button>
+
+                    <a href="{% url 'panel_inventario' %}" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
+                        Cancelar
+                    </a>
+                </div>
+            </div>
+        </form>
+    {% else %}
+        <p class="muted">
+            No hay productos disponibles para crear inventario. Todos los productos activos ya tienen ficha de inventario.
+        </p>
+    {% endif %}
+</div>
+
+{% endblock %}

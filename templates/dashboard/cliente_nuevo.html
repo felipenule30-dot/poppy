@@ -1,0 +1,78 @@
+{% extends "dashboard/base.html" %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Nuevo cliente</h1>
+        <div class="meta">Crear ficha de cliente</div>
+    </div>
+</div>
+
+<div class="card" style="max-width: 760px;">
+    <form method="post">
+        {% csrf_token %}
+
+        <div style="display:grid; gap:18px;">
+            <div>
+                <label>Nombre</label>
+                <input type="text" name="nombre" required style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Teléfono</label>
+                <input type="text" name="telefono" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>WhatsApp</label>
+                <input type="text" name="whatsapp" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Email</label>
+                <input type="email" name="email" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Documento</label>
+                <input type="text" name="documento" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Ciudad</label>
+                <input type="text" name="ciudad" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Instagram</label>
+                <input type="text" name="instagram" style="width:100%; padding:12px; margin-top:6px;">
+            </div>
+
+            <div>
+                <label>Notas</label>
+                <textarea name="notas" rows="4" style="width:100%; padding:12px; margin-top:6px;"></textarea>
+            </div>
+
+            <div>
+                <label><input type="checkbox" name="recurrente"> Recurrente</label>
+            </div>
+
+            <div>
+                <label><input type="checkbox" name="activo" checked> Activo</label>
+            </div>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <button type="submit" style="padding:12px 18px; border:none; border-radius:12px; background:var(--accent); color:white;">
+                    Crear cliente
+                </button>
+
+                <a href="{% url 'panel_clientes' %}" style="padding:12px 18px; border:1px solid var(--line); border-radius:12px;">
+                    Cancelar
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

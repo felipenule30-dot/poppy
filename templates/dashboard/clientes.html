@@ -1,0 +1,179 @@
+{% extends "dashboard/base.html" %}
+{% load money_filters %}
+
+{% block content %}
+
+<div class="topbar">
+    <div>
+        <h1>Clientes</h1>
+        <div class="meta">Listado y gestión comercial de clientes</div>
+    </div>
+
+    <div>
+        <a href="{% url 'panel_cliente_nuevo' %}" style="
+            display:inline-block;
+            padding:12px 18px;
+            border:none;
+            border-radius:12px;
+            background:var(--accent);
+            color:white;
+            font-weight:700;
+        ">
+            Nuevo cliente
+        </a>
+    </div>
+</div>
+
+{% if messages %}
+    <div style="margin-bottom:20px;">
+        {% for message in messages %}
+            <div class="card" style="padding:14px; margin-bottom:10px;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="card" style="margin-bottom:20px;">
+    <form method="get" style="display:flex; gap:12px; flex-wrap:wrap;">
+        <input
+            type="text"
+            name="q"
+            value="{{ q }}"
+            placeholder="Buscar por nombre"
+            style="flex:1; min-width:240px; padding:12px;"
+        >
+
+        <button type="submit" style="
+            padding:12px 18px;
+            border:none;
+            border-radius:12px;
+            background:var(--accent);
+            color:white;
+        ">
+            Buscar
+        </button>
+    </form>
+</div>
+
+<div class="card">
+    <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse;">
+            <thead>
+                <tr style="text-align:left; border-bottom:1px solid var(--line);">
+                    <th style="padding:14px 10px;">Cliente</th>
+                    <th style="padding:14px 10px;">Teléfono</th>
+                    <th style="padding:14px 10px;">WhatsApp</th>
+                    <th style="padding:14px 10px;">Ciudad</th>
+                    <th style="padding:14px 10px;">Estado</th>
+                    <th style="padding:14px 10px;">Compras</th>
+                    <th style="padding:14px 10px;">Total gastado</th>
+                    <th style="padding:14px 10px;">Última compra</th>
+                    <th style="padding:14px 10px;">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr style="border-bottom:1px solid var(--line);">
+                        <td style="padding:14px 10px;">
+                            <strong>{{ cliente.nombre }}</strong>
+                            {% if cliente.email %}
+                                <div style="font-size:12px; color:#666; margin-top:4px;">
+                                    {{ cliente.email }}
+                                </div>
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ cliente.telefono|default:"-" }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ cliente.whatsapp|default:"-" }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ cliente.ciudad|default:"-" }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                                {% if cliente.recurrente %}
+                                    <span style="
+                                        padding:6px 10px;
+                                        border-radius:999px;
+                                        background:#e6f6ea;
+                                        color:#18794e;
+                                        font-size:12px;
+                                        font-weight:700;
+                                    ">
+                                        Recurrente
+                                    </span>
+                                {% endif %}
+
+                                {% if cliente.activo %}
+                                    <span style="
+                                        padding:6px 10px;
+                                        border-radius:999px;
+                                        background:#f5f0ea;
+                                        color:#7a5c3e;
+                                        font-size:12px;
+                                        font-weight:700;
+                                    ">
+                                        Activo
+                                    </span>
+                                {% else %}
+                                    <span style="
+                                        padding:6px 10px;
+                                        border-radius:999px;
+                                        background:#fdeaea;
+                                        color:#b42318;
+                                        font-size:12px;
+                                        font-weight:700;
+                                    ">
+                                        Inactivo
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </td>
+
+                        <td style="padding:14px 10px; font-weight:700;">
+                            {{ cliente.total_compras }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {{ cliente.total_gastado|cop }}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            {% if cliente.ultima_compra %}
+                                {{ cliente.ultima_compra.created_at|date:"d/m/Y" }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td style="padding:14px 10px;">
+                            <a href="{% url 'panel_cliente_editar' cliente.id %}" style="
+                                padding:8px 12px;
+                                border:1px solid var(--line);
+                                border-radius:10px;
+                            ">
+                                Editar
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9" style="padding:18px 10px;" class="muted">
+                            No hay clientes registrados todavía.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% load money_filters %}
+
+{% block content %}
+
+<section class="section">
+    <div class="grid grid-2">
+        <div>
+            {% with producto.imagenes.first as primera_imagen %}
+                {% if primera_imagen %}
+                    <div
+                        class="visual-block"
+                        style="
+                            min-height: 620px;
+                            background-image: url('{{ primera_imagen.imagen.url }}');
+                            background-size: cover;
+                            background-position: center;
+                        "
+                    ></div>
+                {% else %}
+                    <div class="visual-block soft-bg-2" style="min-height: 620px;"></div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="intro-copy" style="display:flex; flex-direction:column; justify-content:center;">
+            {% if producto.coleccion %}
+                <p class="section-label">{{ producto.coleccion.nombre }}</p>
+            {% endif %}
+
+            <h2 class="editorial-title" style="margin-bottom:18px;">
+                {{ producto.nombre }}
+            </h2>
+
+            {% if producto.precio %}
+                <p style="font-size:22px; margin-bottom:20px;">
+                    <strong style="color:var(--poppy-blue);">
+                        {{ producto.precio|cop }}
+                    </strong>
+                </p>
+            {% endif %}
+
+            <div style="display:grid; gap:10px; margin-bottom:18px;">
+                {% if producto.material %}
+                    <p><strong style="color:var(--poppy-text-dark);">Material:</strong> {{ producto.material }}</p>
+                {% endif %}
+
+                {% if producto.medidas %}
+                    <p><strong style="color:var(--poppy-text-dark);">Medidas:</strong> {{ producto.medidas }}</p>
+                {% endif %}
+
+                {% if producto.artesano %}
+                    <p>
+                        <strong style="color:var(--poppy-text-dark);">Artesano:</strong>
+                        <a
+                            href="{% url 'artesano_detalle' producto.artesano.slug %}"
+                            style="color:var(--poppy-blue); font-weight:600;"
+                        >
+                            {{ producto.artesano.nombre }}
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+
+            <p style="font-size:15px; max-width:620px;">
+                {{ producto.descripcion }}
+            </p>
+
+            <div style="margin-top: 28px; display:flex; gap:12px; flex-wrap:wrap;">
+                {% if producto.coleccion %}
+                    <a
+                        class="btn btn-outline-dark"
+                        href="/colecciones/{{ producto.coleccion.slug }}/"
+                    >
+                        Volver a la colección
+                    </a>
+                {% endif %}
+                <a class="btn btn-outline-dark" href="/colecciones/">Ver catálogo</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if producto.imagenes.all %}
+<section class="section" style="margin-top: -10px;">
+    <div class="section-header">
+        <p class="section-label">Galería</p>
+        <h2 class="editorial-title">detalles de la pieza</h2>
+    </div>
+
+    <div class="grid grid-3">
+        {% for imagen in producto.imagenes.all %}
+            <div
+                class="card-image"
+                style="
+                    background-image: url('{{ imagen.imagen.url }}');
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 320px;
+                    border-radius: 24px;
+                    box-shadow: var(--shadow-soft);
+                    border: 1px solid var(--poppy-line);
+                "
+            ></div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+{% if producto.artesano %}
+<section class="section">
+    <div class="card" style="padding:34px; border-radius:30px;">
+        <p class="section-label">Artesano</p>
+        <h2 class="editorial-title" style="margin-bottom:14px;">
+            una pieza conectada con su origen
+        </h2>
+
+        <p style="max-width:760px;">
+            Este producto está vinculado al trabajo de
+            <a
+                href="{% url 'artesano_detalle' producto.artesano.slug %}"
+                style="color:var(--poppy-blue); font-weight:600;"
+            >
+                {{ producto.artesano.nombre }}
+            </a>,
+            reforzando la relación entre objeto, proceso y territorio.
+        </p>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

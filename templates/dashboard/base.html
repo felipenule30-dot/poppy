@@ -1,0 +1,220 @@
+{% load static %}
+{% load money_filters %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel | Poppy Cartagena</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/></noscript>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:#f0f2f5;color:#0f172a;display:flex;min-height:100vh}
+        a{text-decoration:none;color:inherit}
+
+        /* ── SIDEBAR ── */
+        .sidebar{
+            width:240px;flex-shrink:0;background:#0f172a;color:#94a3b8;
+            display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto;
+        }
+        .sidebar-logo{
+            padding:24px 20px 16px;
+            border-bottom:1px solid rgba(255,255,255,0.06);
+            margin-bottom:8px;
+        }
+        .sidebar-logo span{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+        .sidebar-logo small{display:block;font-size:11px;color:#64748b;margin-top:2px;font-weight:500}
+        .nav-section{padding:8px 12px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#475569}
+        .nav-link{
+            display:flex;align-items:center;gap:10px;
+            padding:9px 12px;border-radius:8px;margin:1px 8px;
+            font-size:13px;font-weight:500;color:#94a3b8;
+            transition:background .15s,color .15s;
+        }
+        .nav-link:hover{background:rgba(255,255,255,0.06);color:#e2e8f0}
+        .nav-link.active{background:rgba(99,102,241,0.15);color:#818cf8}
+        .nav-icon{width:16px;text-align:center;font-size:14px;flex-shrink:0}
+        .sidebar-footer{margin-top:auto;padding:16px;border-top:1px solid rgba(255,255,255,0.06)}
+        .sidebar-footer a{font-size:12px;color:#475569;display:block;padding:6px 4px}
+        .sidebar-footer a:hover{color:#94a3b8}
+
+        /* ── MAIN ── */
+        .main-wrap{flex:1;display:flex;flex-direction:column;min-width:0}
+
+        /* ── TOPBAR ── */
+        .topbar{
+            background:#fff;border-bottom:1px solid #e2e8f0;
+            padding:0 28px;height:56px;
+            display:flex;align-items:center;justify-content:space-between;
+            position:sticky;top:0;z-index:50;flex-shrink:0;
+        }
+        .topbar-title{font-size:15px;font-weight:700;color:#0f172a}
+        .topbar-meta{font-size:12px;color:#94a3b8;font-weight:500}
+
+        /* ── CONTENT ── */
+        .content{padding:28px;flex:1}
+
+        /* ── CARDS ── */
+        .card{
+            background:#fff;border:1px solid #e2e8f0;border-radius:12px;
+            padding:20px;
+        }
+        .card h3{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:16px}
+
+        /* ── KPI CARDS ── */
+        .kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}
+        .kpi-card{
+            background:#fff;border:1px solid #e2e8f0;border-radius:12px;
+            padding:18px 20px;display:flex;flex-direction:column;gap:6px;
+        }
+        .kpi-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:#64748b}
+        .kpi-value{font-size:28px;font-weight:800;color:#0f172a;line-height:1}
+        .kpi-value.warn{color:#d97706}
+        .kpi-value.danger{color:#dc2626}
+        .kpi-value.good{color:#16a34a}
+
+        /* ── GRID ── */
+        .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:20px}
+
+        /* ── TABLE-LIKE ── */
+        .table-like{display:flex;flex-direction:column}
+        .row{
+            display:flex;justify-content:space-between;align-items:center;gap:16px;
+            padding:11px 0;border-bottom:1px solid #f1f5f9;font-size:13px;
+        }
+        .row:last-child{border-bottom:none}
+        .row-label{color:#0f172a;font-weight:500}
+        .row-sub{font-size:11px;color:#94a3b8;margin-top:2px;font-weight:400}
+        .row-val{font-weight:700;color:#0f172a;white-space:nowrap}
+        .muted{color:#94a3b8}
+
+        /* ── FILTER BAR ── */
+        .filter-bar{
+            background:#fff;border:1px solid #e2e8f0;border-radius:12px;
+            padding:16px 20px;margin-bottom:20px;
+            display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;
+        }
+        .filter-bar label{font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:5px}
+        .filter-bar input[type=date]{
+            padding:8px 12px;border:1px solid #e2e8f0;border-radius:8px;
+            font-family:inherit;font-size:13px;color:#0f172a;outline:none;
+        }
+        .filter-bar input[type=date]:focus{border-color:#6366f1}
+        .btn{
+            padding:8px 16px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;
+            cursor:pointer;border:none;transition:all .15s;
+        }
+        .btn-primary{background:#6366f1;color:#fff}.btn-primary:hover{background:#4f46e5}
+        .btn-ghost{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}.btn-ghost:hover{background:#e2e8f0}
+        .btn-green{background:#16a34a;color:#fff}.btn-green:hover{background:#15803d}
+        .btn-red{background:#fee2e2;color:#dc2626;border:1px solid #fecaca}.btn-red:hover{background:#fecaca}
+        .btn-sm{padding:5px 10px;font-size:12px}
+
+        /* ── SECTION HEADER ── */
+        .section-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+        .section-header h1{font-size:22px;font-weight:800;color:#0f172a}
+        .section-header .sub{font-size:13px;color:#64748b;margin-top:2px}
+
+        /* ── PILLS / BADGES ── */
+        .badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:700}
+        .badge-green{background:#dcfce7;color:#15803d}
+        .badge-yellow{background:#fef9c3;color:#a16207}
+        .badge-red{background:#fee2e2;color:#dc2626}
+        .badge-blue{background:#dbeafe;color:#1d4ed8}
+        .badge-gray{background:#f1f5f9;color:#64748b}
+
+        /* ── TABLE ── */
+        .data-table{width:100%;border-collapse:collapse;font-size:13px}
+        .data-table th{text-align:left;padding:8px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#64748b;border-bottom:2px solid #f1f5f9}
+        .data-table td{padding:12px;border-bottom:1px solid #f8fafc;color:#0f172a;vertical-align:middle}
+        .data-table tr:hover td{background:#f8fafc}
+        .data-table tr:last-child td{border-bottom:none}
+
+        /* ── EMPTY STATE ── */
+        .empty{text-align:center;padding:40px 20px;color:#94a3b8;font-size:13px}
+
+        /* ── FORM ── */
+        .form-group{margin-bottom:18px}
+        .form-group label{display:block;font-size:12px;font-weight:600;color:#475569;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em}
+        .form-group input,.form-group select,.form-group textarea{
+            width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;
+            font-family:inherit;font-size:14px;color:#0f172a;outline:none;background:#fff;
+        }
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,0.08)}
+        .form-actions{display:flex;gap:10px;padding-top:8px}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:768px){
+            .sidebar{width:200px}
+            .kpi-grid{grid-template-columns:repeat(2,1fr)}
+            .grid-2{grid-template-columns:1fr}
+            .content{padding:16px}
+        }
+        @media(max-width:600px){
+            body{flex-direction:column}
+            .sidebar{width:100%;height:auto;min-height:unset;position:relative}
+            .kpi-grid{grid-template-columns:1fr 1fr}
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <span>🌸 Poppy</span>
+            <small>Panel de gestión</small>
+        </div>
+
+        <div class="nav-section">Principal</div>
+        <a href="/panel/dashboard/" class="nav-link {% block nav_dashboard %}{% endblock %}">
+            <span class="nav-icon">📊</span> Dashboard
+        </a>
+
+        <div class="nav-section">Catálogo</div>
+        <a href="/panel/productos/" class="nav-link {% block nav_productos %}{% endblock %}">
+            <span class="nav-icon">🛍️</span> Productos
+        </a>
+        <a href="/panel/inventario/" class="nav-link {% block nav_inventario %}{% endblock %}">
+            <span class="nav-icon">📦</span> Inventario
+        </a>
+
+        <div class="nav-section">Ventas</div>
+        <a href="/panel/pedidos/" class="nav-link {% block nav_pedidos %}{% endblock %}">
+            <span class="nav-icon">🛒</span> Pedidos online
+        </a>
+        <a href="/panel/ventas/" class="nav-link {% block nav_ventas %}{% endblock %}">
+            <span class="nav-icon">💳</span> Ventas directas
+        </a>
+        <a href="/panel/clientes/" class="nav-link {% block nav_clientes %}{% endblock %}">
+            <span class="nav-icon">👥</span> Clientes
+        </a>
+
+        <div class="nav-section">Compras</div>
+        <a href="/panel/proveedores/" class="nav-link {% block nav_proveedores %}{% endblock %}">
+            <span class="nav-icon">🏭</span> Proveedores
+        </a>
+        <a href="/panel/compras/" class="nav-link {% block nav_compras %}{% endblock %}">
+            <span class="nav-icon">🧾</span> Compras
+        </a>
+
+        <div class="sidebar-footer">
+            <a href="/admin/">⚙ Admin Django</a>
+            <a href="/">← Volver al sitio</a>
+        </div>
+    </aside>
+
+    <div class="main-wrap">
+        <header class="topbar">
+            <div class="topbar-title">{% block page_title %}Panel{% endblock %}</div>
+            <div class="topbar-meta">{% block page_meta %}{% endblock %}</div>
+        </header>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>
